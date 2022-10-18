@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+    }
+    #mbox{
+        display: flex;
+        
+        flex-direction: column;
+        width: 30em;
+        height: 35em;
+        
+        color: black;
+        background-color: white;
+        overflow-wrap: break-word;
+        overflow-y: scroll;
+    }
+    #hd{
+        width: inherit;
+        display: flex;
+        justify-content: space-between;
+      
+        padding: 4px;
+        color: black;
+        
+        height: 35px;
+        background-color: rgb(20, 20, 20);
+        font-weight: bold;
+    }
+    .itm{
+        display: flex;
+        padding: 10px;
+        margin: 6px 0px;
+        width: 100%;
+        color: #fffefe;
+        
+        justify-content: space-between;
+    }
+    #title{
+        display: flex;
+        padding:  10px;
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        background-color: rgb(17, 17, 17);
+        color: white;
+        font-weight: bold;
+        font-size: large;
+        height: 2em;
+    }
+    button{
+        width: 10em;;
+    }
+    .itm:nth-child(even){
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        font-size: medium;
+    }
+    .itm:nth-child(odd){
+        background-color: gray;
+        color: white;
+        font-weight: bold;
+        font-size: medium;
+    }
+</style>
+<body>
+   var cnt=0;
+    <div id="mbox">
+        <p id="title">To do list</p>
+        <div id="hd">
+            <input id="inp" type="text" value="">
+            <button onclick="add()">Add</button>
+        </div>
+
+        <div id="itmm"></div>
+    </div>
+    <script>
+        function add(){
+            
+            var p=document.createElement("p");
+            p.innerText=document.getElementById("inp").value;
+            p.setAttribute("class", "itm");
+            document.getElementById("inp").value="";
+            
+            var btn=document.createElement("button");
+            btn.textContent="Remove";
+            btn.style.backgroundColor="white";
+            btn.addEventListener('click', function(e) {
+        p.parentNode.removeChild(p);
+    });
+            p.appendChild(btn);
+            document.getElementById("itmm").appendChild(p);
+        }
+        
+    </script>
+</body>
+</html>
